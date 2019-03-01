@@ -3,8 +3,10 @@
  */
 #include "cli.h"
 #include "version.h"
+#include <errno.h>
 #include <iostream>
 #include <boost/program_options/parsers.hpp>
+#include "boost/program_options/variables_map.hpp"
 #include <boost/program_options/positional_options.hpp>
 #include <boost/program_options/options_description.hpp>
 
@@ -13,7 +15,7 @@ using std::endl;
 
 namespace po = boost::program_options;
 
-po::variables_map cli::parse(int argc, char** argv)
+int cli::main(int argc, char** argv)
 {
     // general arguments
     po::options_description general("General arguments");
@@ -30,11 +32,18 @@ po::variables_map cli::parse(int argc, char** argv)
 
     if (vm.count("help")) {
         general.print(cout);
+        return 0;
     }
 
     if (vm.count("version")) {
         cout << "gameinmotion version " << __GAMEINMOTION_VERSION__ << endl;
+        return 0;
     }
 
-    return vm;
+    if (!vm.count("video")) {
+        cout << "usage: gameinmotion [options] video" << endl;
+        return -EINVAL;
+    }
+
+    return 0;
 }
