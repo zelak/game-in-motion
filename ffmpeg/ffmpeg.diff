@@ -1,0 +1,24 @@
+diff --git a/libavfilter/Makefile b/libavfilter/Makefile
+index fef6ec5c55..59a4a826ac 100644
+--- a/libavfilter/Makefile
++++ b/libavfilter/Makefile
+@@ -444,6 +444,7 @@ OBJS-$(CONFIG_SMPTEHDBARS_FILTER)            += vsrc_testsrc.o
+ OBJS-$(CONFIG_TESTSRC_FILTER)                += vsrc_testsrc.o
+ OBJS-$(CONFIG_TESTSRC2_FILTER)               += vsrc_testsrc.o
+ OBJS-$(CONFIG_YUVTESTSRC_FILTER)             += vsrc_testsrc.o
++OBJS-$(CONFIG_MOTIONBLUR_FILTER)             += vf_motionblur.o
+ 
+ OBJS-$(CONFIG_NULLSINK_FILTER)               += vsink_nullsink.o
+ 
+diff --git a/libavfilter/allfilters.c b/libavfilter/allfilters.c
+index c51ae0f3c7..04fd1e07cc 100644
+--- a/libavfilter/allfilters.c
++++ b/libavfilter/allfilters.c
+@@ -274,6 +274,7 @@ extern AVFilter ff_vf_metadata;
+ extern AVFilter ff_vf_midequalizer;
+ extern AVFilter ff_vf_minterpolate;
+ extern AVFilter ff_vf_mix;
++extern AVFilter ff_vf_motionblur;
+ extern AVFilter ff_vf_mpdecimate;
+ extern AVFilter ff_vf_negate;
+ extern AVFilter ff_vf_nlmeans;

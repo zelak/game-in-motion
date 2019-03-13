@@ -16,7 +16,8 @@ include_directories(${FFmpeg_INCLUDE_DIRS})
 SET(CMAKE_CXX_FLAGS "-std=c++11")
 
 # source files
-file(GLOB SOURCES "src/*.cc")
+file(GLOB SOURCES   "src/*.cc"
+                    "ffmpeg/vf_motionblur.c")
 
 # version file
 file(WRITE src/version.h "char __GAMEINMOTION_VERSION__[] = \"0.1.0\";")
